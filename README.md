@@ -63,7 +63,7 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 
 ## Design
 
-[- Select component design](https://www.figma.com/file/PHVkW8n5AbpBAu3KU2Qlt6/Select-component-mock)
+[# Select component design](https://www.figma.com/file/PHVkW8n5AbpBAu3KU2Qlt6/Select-component-mock)
 
 ## Props
 
