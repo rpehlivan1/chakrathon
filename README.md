@@ -28,10 +28,17 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 
 ### Fully controllabled icons
 ```html
-<Select hideDefaultChevron defaultValue="option-2" leftIcon={(isOpen) => isOpen ? <UpChevronIcon /> : <UpChavronIcon />}>
+<Select
+    hideDefaultChevron
+    defaultValue="option-2"
+    leftIcon={(isOpen) => isOpen ? <UpChevronIcon /> : <UpChavronIcon />}>
     <SelectOption value="option-1" leftIcon={<HouseIcon/>}>Option 1</SelectOption>
     <SelectOption value="option-2" rightIcon={<UserIcon/>}>Option 2</SelectOption>
-    <SelectOption value="option-3" rightIcon={(isSelected) => isSelected ? <UserIcon/> : <HouseIcon/>}>Option 3</SelectOption>
+    <SelectOption
+        value="option-3"
+        rightIcon={(isSelected) => isSelected ? <UserIcon/> : <HouseIcon/>}>
+        Option 3
+    </SelectOption>
 </Select>
 ```
 
