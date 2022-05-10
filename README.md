@@ -65,7 +65,6 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 
 ### Select
 
----
 | Prop            | Description                                                    | Type                                           |
 |-----------------|----------------------------------------------------------------|------------------------------------------------|
 | rightIcon       | Element placed before the children                             | `React.ReactNode, (isOpen) => React.ReactNode` |
