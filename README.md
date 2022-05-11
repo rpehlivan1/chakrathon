@@ -10,7 +10,7 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 
 ## Usage
 
-### Fully controlled select
+### Fully controllable select
 ```html
 <Select placeholder="Select option" value={value} onChange={onChange}>
     <SelectOption value="option-value-1">Option 1</SelectOption>
@@ -18,7 +18,7 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 </Select>
 ```
 
-### Fully controllabled open state
+### Fully controllable open state
 ```html
 <Select isOpen={isOpen} onVisibleChange={setIsOpen}>
     <SelectOption>Option 1</SelectOption>
@@ -26,12 +26,12 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 </Select>
 ```
 
-### Fully controllabled icons
+### Fully controllable icons
 ```html
 <Select
     hideDefaultChevron
     defaultValue="option-2"
-    leftIcon={(isOpen) => isOpen ? <UpChevronIcon /> : <UpChavronIcon />}>
+    leftIcon={(isOpen) => isOpen ? <UpChevronIcon /> : <DownChevronIcon />}>
     <SelectOption value="option-1" leftIcon={<HouseIcon/>}>Option 1</SelectOption>
     <SelectOption value="option-2" rightIcon={<UserIcon/>}>Option 2</SelectOption>
     <SelectOption
