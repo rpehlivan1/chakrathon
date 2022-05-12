@@ -1,7 +1,7 @@
 import { Box, BoxProps, StylesProvider, useMultiStyleConfig } from '@chakra-ui/react';
-import SelectInput from './components/select-input.component';
+import SelectButton from './components/select-button.component';
 import React from 'react';
-import SelectOptionsContainer from '~components/Select/components/select-options-container.component';
+import SelectListBox from '~components/Select/components/select-list-box.component';
 import { SelectSize, SelectValue, SelectVariant } from '~components/Select/types/select.type';
 import SelectProvider from '~components/Select/components/select-provider.component';
 
@@ -22,8 +22,11 @@ export interface SelectProps extends Omit<BoxProps, 'value' | 'onChange'> {
   onVisibleChange?: (status: boolean) => void;
 }
 
-const Select = React.forwardRef<HTMLInputElement, SelectProps>(
-  ({ children, value, onChange, variant, size, isDisabled, ...restProps }, forwardRef) => {
+const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
+  (
+    { children, placeholder, value, onChange, variant, size, isDisabled, ...restProps },
+    forwardRef,
+  ) => {
     const styles = useMultiStyleConfig('SelectStyles', { variant, size, isDisabled });
 
     const onValueChange = React.useCallback(
@@ -33,14 +36,15 @@ const Select = React.forwardRef<HTMLInputElement, SelectProps>(
       [onChange],
     );
 
+    // TODO: show selected value
     return (
       <SelectProvider value={value} onChange={onValueChange}>
-        <Box className="chakra-select" sx={{ ...styles.wrapper, ...restProps.sx }}>
-          <StylesProvider value={styles}>
-            <SelectInput ref={forwardRef} />
-            <SelectOptionsContainer>{children}</SelectOptionsContainer>
-          </StylesProvider>
-        </Box>
+        <StylesProvider value={styles}>
+          <Box className="chakra-select" sx={{ ...styles.wrapper, ...restProps.sx }}>
+            <SelectButton ref={forwardRef}>{placeholder || 'Please select value'}</SelectButton>
+            <SelectListBox>{children}</SelectListBox>
+          </Box>
+        </StylesProvider>
       </SelectProvider>
     );
   },

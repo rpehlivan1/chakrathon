@@ -23,7 +23,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
   const { option } = useStyles();
   const { isSelected, ...optionProps } = useSelectOption(value);
 
-  const renderLeftIcon = () => {
+  const renderLeftIcon = (): React.ReactNode | undefined => {
     if (!leftIcon) {
       return;
     }
@@ -35,7 +35,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
     );
   };
 
-  const renderRightIcon = () => {
+  const renderRightIcon = (): React.ReactNode | undefined => {
     if (!rightIcon) {
       return;
     }
@@ -47,7 +47,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
     );
   };
 
-  const renderContent = () => {
+  const renderContent = (): React.ReactNode => {
     if (!leftIcon && !rightIcon) {
       return children;
     }
@@ -57,7 +57,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
 
   return (
     <Box
-      className={cx('chakra-select__select-option', isSelected && 'chakra-select__option')}
+      className={cx('chakra-select__select-option', isSelected && 'chakra-select__option-active')}
       as="li"
       sx={{ ...option, ...sx }}
       {...optionProps}
