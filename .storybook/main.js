@@ -3,6 +3,9 @@ const path = require('path');
 const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   webpackFinal: async (config) => {
     return {
       ...config,
