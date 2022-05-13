@@ -1,9 +1,9 @@
 import { Box, BoxProps, StylesProvider, useMultiStyleConfig } from '@chakra-ui/react';
 import SelectButton from './components/select-button.component';
 import React from 'react';
-import SelectListBox from '~components/Select/components/select-list-box.component';
-import { SelectSize, SelectValue, SelectVariant } from '~components/Select/types/select.type';
-import SelectProvider from '~components/Select/components/select-provider.component';
+import { SelectSize, SelectValue, SelectVariant } from '@components/Select/types/select.type';
+import SelectProvider from '@components/Select/components/select-provider.component';
+import SelectListBox from '@components/Select/components/select-list-box.component';
 
 export interface SelectProps extends Omit<BoxProps, 'value' | 'onChange'> {
   children: React.ReactNode;

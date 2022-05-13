@@ -1,8 +1,8 @@
 import { Box, BoxProps, useStyles } from '@chakra-ui/react';
 import { cx, runIfFn } from '@chakra-ui/utils';
 import React from 'react';
-import { SelectValue } from '~components/Select';
-import useSelectOption from '~components/Select/hooks/use-select-option.hook';
+import useSelectOption from '@components/Select/hooks/use-select-option.hook';
+import { SelectValue } from '@components/Select';
 
 export interface SelectOptionProps extends BoxProps {
   value: SelectValue;

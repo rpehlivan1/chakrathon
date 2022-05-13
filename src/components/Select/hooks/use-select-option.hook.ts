@@ -1,5 +1,5 @@
-import useSelectContext from '~components/Select/hooks/use-select-context.hook';
-import { SelectValue } from '~components/Select';
+import { SelectValue } from '@components/Select';
+import useSelectContext from '@components/Select/hooks/use-select-context.hook';
 
 const useSelectOption = (optionValue: SelectValue) => {
   const { value, onChange } = useSelectContext();

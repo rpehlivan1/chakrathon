@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "types": ["vite/client"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -17,10 +18,10 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "~components/*": ["./src/components/*"],
-      "~theme/*": ["./src/theme/*"],
-      "~src/*": ["./src/*"],
-      "~root/*": ["*"]
+      "@components/*": ["./src/components/*"],
+      "@theme/*": ["./src/theme/*"],
+      "@src/*": ["./src/*"],
+      "@root/*": ["*"]
     }
   },
   "include": ["src"]
