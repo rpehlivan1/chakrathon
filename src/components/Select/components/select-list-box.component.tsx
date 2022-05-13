@@ -1,6 +1,6 @@
 import { Box, BoxProps, useStyles } from '@chakra-ui/react';
 import React from 'react';
-import useSelectOptionsContainer from '~components/Select/hooks/use-select-options-container.hook';
+import useSelectOptionsContainer from '@/components/Select/hooks/use-select-options-container.hook';
 
 export interface SelectListBoxProps extends BoxProps {
   children: React.ReactNode;

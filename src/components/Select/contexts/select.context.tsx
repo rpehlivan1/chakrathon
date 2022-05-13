@@ -1,5 +1,5 @@
-import { SelectValue } from '~components/Select';
 import React from 'react';
+import { SelectValue } from '@/components/Select';
 
 export interface SelectContextProps {
   value?: SelectValue;
