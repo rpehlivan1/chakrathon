@@ -4,18 +4,19 @@ const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
   webpackFinal: async (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': toPath('./src'),
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@components': toPath('./src/components'),
+          '@theme': toPath('./src/theme'),
+          '@src': toPath('./src'),
+          '@root': toPath('*'),
+        },
+      },
     };
-
-    config.module.rules.push({
-      test: /\.mjs?$/,
-      include: /node_modules/,
-      type: 'javascript/auto',
-    });
-
-    return config;
   },
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-a11y'],
   framework: '@storybook/react',

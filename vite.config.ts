@@ -1,12 +1,8 @@
 import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
-const path = require('path');
+import svgr from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-  plugins: [reactRefresh()],
+  plugins: [reactRefresh(), svgr({ svgrOptions: { icon: true } }), tsconfigPaths()],
 });

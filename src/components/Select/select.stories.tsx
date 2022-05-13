@@ -2,8 +2,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Box, Divider, Text } from '@chakra-ui/react';
 import { AddIcon, PhoneIcon } from '@chakra-ui/icons';
 import React from 'react';
-import SelectOption from '@/components/Select/components/select-option.component';
-import Select from '@/components/Select/select.component';
+import SelectOption from '@components/Select/components/select-option.component';
+import Select from '@components/Select/select.component';
 
 const selectStories: ComponentMeta<typeof Select> = {
   title: 'Components/Select',
