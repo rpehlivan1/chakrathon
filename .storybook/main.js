@@ -17,6 +17,8 @@ module.exports = {
           '@theme': toPath('./src/theme'),
           '@src': toPath('./src'),
           '@root': toPath('*'),
+          '@emotion/core': '@emotion/react',
+          'emotion-theming': '@emotion/react',
         },
       },
     };
