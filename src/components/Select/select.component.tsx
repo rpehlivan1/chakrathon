@@ -1,51 +1,71 @@
-import { Box, BoxProps, StylesProvider, useMultiStyleConfig } from '@chakra-ui/react';
-import SelectButton from './components/select-button.component';
+import { Box, BoxProps, Popover, useMultiStyleConfig } from '@chakra-ui/react';
 import React from 'react';
 import { SelectSize, SelectValue, SelectVariant } from '@components/Select/types/select.type';
-import SelectProvider from '@components/Select/components/select-provider.component';
-import SelectListBox from '@components/Select/components/select-list-box.component';
+import SelectInput from '@components/Select/components/select-input.component';
+import SelectStyleContext from './contexts/select-style.context';
+import SelectContext from './contexts/select.context';
+import useSelect from '@components/Select/hooks/use-select.hook';
+import {
+  IconRenderCallback,
+  OptionIconRenderCallback,
+} from '@components/Select/types/select-render.type';
 
-export interface SelectProps extends Omit<BoxProps, 'value' | 'onChange'> {
+interface SelectControlProps {
+  isOpen?: boolean;
+  invalid?: boolean;
+  clearable?: boolean;
+  isDisabled?: boolean;
+  readonly?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
+}
+
+export interface SelectProps extends Omit<BoxProps, 'value' | 'onChange'>, SelectControlProps {
+  name: string;
   children: React.ReactNode;
   value?: SelectValue;
   variant?: SelectVariant;
   size?: SelectSize;
-  isOpen?: boolean;
-  clearable?: boolean;
-  isDisabled?: boolean;
   hideDefaultChevron?: boolean;
   placeholder?: string;
   defaultValue?: SelectValue;
-  leftIcon?: ((open: boolean) => React.ReactElement) | React.ReactElement;
-  rightIcon?: ((open: boolean) => React.ReactElement) | React.ReactElement;
+  leftIcon?: IconRenderCallback;
+  rightIcon?: IconRenderCallback;
+  optionLeftIcon?: OptionIconRenderCallback;
+  optionRightIcon?: OptionIconRenderCallback;
   onChange?: (value: SelectValue) => void;
-  onVisibleChange?: (status: boolean) => void;
 }
 
 const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
   (
-    { children, placeholder, value, onChange, variant, size, isDisabled, ...restProps },
+    {
+      name,
+      children,
+      placeholder,
+      isOpen,
+      value,
+      onChange,
+      variant,
+      size,
+      isDisabled,
+      ...restProps
+    },
     forwardRef,
   ) => {
+    const context = useSelect({ isOpen, value, onChange });
     const styles = useMultiStyleConfig('SelectStyles', { variant, size, isDisabled });
 
-    const onValueChange = React.useCallback(
-      (value: SelectValue) => {
-        onChange?.(value);
-      },
-      [onChange],
-    );
-
-    // TODO: show selected value
     return (
-      <SelectProvider value={value} onChange={onValueChange}>
-        <StylesProvider value={styles}>
+      <SelectContext.Provider value={context}>
+        <SelectStyleContext.Provider value={styles}>
           <Box className="chakra-select" sx={{ ...styles.wrapper, ...restProps.sx }}>
-            <SelectButton ref={forwardRef}>{placeholder || 'Please select value'}</SelectButton>
-            <SelectListBox>{children}</SelectListBox>
+            <Popover isOpen={context.isOpen}>
+              <SelectInput name={name} />
+              {children}
+            </Popover>
           </Box>
-        </StylesProvider>
-      </SelectProvider>
+        </SelectStyleContext.Provider>
+      </SelectContext.Provider>
     );
   },
 );

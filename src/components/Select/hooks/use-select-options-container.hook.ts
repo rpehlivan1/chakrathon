@@ -1,5 +1,5 @@
-const useSelectOptionsContainer = () => {
+const useSelectMenu = () => {
   return { role: 'listbox' };
 };
 
-export default useSelectOptionsContainer;
+export default useSelectMenu;

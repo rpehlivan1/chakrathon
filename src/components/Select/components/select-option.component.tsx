@@ -1,8 +1,9 @@
-import { Box, BoxProps, useStyles } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/react';
 import { cx, runIfFn } from '@chakra-ui/utils';
 import React from 'react';
 import useSelectOption from '@components/Select/hooks/use-select-option.hook';
 import { SelectValue } from '@components/Select';
+import useSelectStyles from '@components/Select/hooks/use-select-styles.hook';
 
 export interface SelectOptionProps extends BoxProps {
   value: SelectValue;
@@ -20,8 +21,8 @@ const SelectOption: React.FC<SelectOptionProps> = ({
   sx,
   ...restProps
 }) => {
-  const { option } = useStyles();
-  const { isSelected, ...optionProps } = useSelectOption(value);
+  const { option } = useSelectStyles();
+  const { isSelected, ...optionProps } = useSelectOption({ value, label: children });
 
   const renderLeftIcon = (): React.ReactNode | undefined => {
     if (!leftIcon) {
@@ -52,7 +53,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
       return children;
     }
 
-    return <Box flex="1">{children}</Box>;
+    return <Box className="chakra-select__option-label">{children}</Box>;
   };
 
   return (

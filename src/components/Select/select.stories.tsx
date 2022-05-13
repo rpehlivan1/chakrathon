@@ -4,6 +4,9 @@ import { AddIcon, PhoneIcon } from '@chakra-ui/icons';
 import React from 'react';
 import SelectOption from '@components/Select/components/select-option.component';
 import Select from '@components/Select/select.component';
+import { SelectValue } from '@components/Select/types/select.type';
+import SelectButton from '@components/Select/components/select-button.component';
+import SelectMenu from '@components/Select/components/select-menu.component';
 
 const selectStories: ComponentMeta<typeof Select> = {
   title: 'Components/Select',
@@ -49,21 +52,25 @@ const ExampleContainer = ({ header, children }: { header: string; children: Reac
 };
 
 export const SelectComponent: ComponentStory<typeof Select> = (props) => {
+  const [value, onChange] = React.useState<SelectValue>();
+
   return (
     <Box>
       <Text as="h1">Select component</Text>
       <Divider mb={10} />
-      <Select {...props} value="value-2">
-        <SelectOption value="value-1">Option 1</SelectOption>
-        <SelectOption value="value-2" leftIcon={<AddIcon />}>
-          Option 2
-        </SelectOption>
-        <SelectOption value="value-3" leftIcon={<AddIcon />} rightIcon={<PhoneIcon />}>
-          Option 3
-        </SelectOption>
+      <Box>Selected: {value}</Box>
+      <Select {...props} value={value} onChange={onChange}>
+        <SelectButton>Trigger</SelectButton>
+        <SelectMenu>
+          <SelectOption value="value-1">Option 1</SelectOption>
+          <SelectOption value="value-2" leftIcon={<AddIcon />}>
+            Option 2
+          </SelectOption>
+          <SelectOption value="value-3" leftIcon={<AddIcon />} rightIcon={<PhoneIcon />}>
+            Option 3
+          </SelectOption>
+        </SelectMenu>
       </Select>
-      <Divider m={10} />
-      <ExampleContainer header="1. Example">Example content</ExampleContainer>
     </Box>
   );
 };
