@@ -1,6 +1,6 @@
 import { Box, BoxProps, PopoverBody, PopoverContent } from '@chakra-ui/react';
 import React from 'react';
-import useSelectMenu from '@components/Select/hooks/use-select-options-container.hook';
+import useSelectMenu from '@components/Select/hooks/use-select-menu.hook';
 import useSelectStyles from '@components/Select/hooks/use-select-styles.hook';
 
 export interface SelectMenuProps extends BoxProps {

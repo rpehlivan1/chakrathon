@@ -3,17 +3,18 @@ import React from 'react';
 import { runIfFn } from '@chakra-ui/utils';
 import useSelectContext from '@components/Select/hooks/use-select-context.hook';
 import useSelectStyles from '@components/Select/hooks/use-select-styles.hook';
+import { MaybeRenderElementProp } from '@src/types/render.type';
 
 export interface SelectButtonProps extends Omit<ButtonProps, 'leftIcon' | 'rightIcon'> {
   children: React.ReactNode;
-  leftIcon?: ((open: boolean) => React.ReactElement) | React.ReactElement;
-  rightIcon?: ((open: boolean) => React.ReactElement) | React.ReactElement;
+  leftIcon?: MaybeRenderElementProp<boolean>;
+  rightIcon?: MaybeRenderElementProp<boolean>;
 }
 
 const SelectButton = React.forwardRef<HTMLButtonElement, SelectButtonProps>(
   ({ leftIcon, rightIcon, children, sx, onClick, ...restProps }, forwardRef) => {
     const { button } = useSelectStyles();
-    const { isOpen = false, onToggle } = useSelectContext();
+    const { isOpen = false, onToggle, isDisabled } = useSelectContext();
 
     const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       onToggle();
@@ -39,6 +40,7 @@ const SelectButton = React.forwardRef<HTMLButtonElement, SelectButtonProps>(
       <PopoverTrigger>
         <Button
           ref={forwardRef}
+          isDisabled={isDisabled}
           className="chakra-select__select-button"
           sx={{ ...button, ...sx }}
           leftIcon={renderLeftIcon()}
