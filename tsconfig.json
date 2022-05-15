@@ -3,7 +3,7 @@
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "types": ["vite/client"],
+    "types": ["vite/client", "jest", "@testing-library/jest-dom"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

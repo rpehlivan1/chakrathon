@@ -62,7 +62,7 @@ const Select = React.forwardRef<HTMLInputElement, SelectProps>(
       <SelectContext.Provider value={context}>
         <SelectStyleContext.Provider value={styles}>
           <Box className="chakra-select" sx={{ ...styles.wrapper, ...sx }} {...restRootProps}>
-            <Popover isOpen={context.isOpen}>
+            <Popover matchWidth isOpen={context.isOpen}>
               <SelectInput ref={forwardRef} name={name} />
               {runIfFn(children, { isOpen: context.isOpen, option: context.option })}
             </Popover>

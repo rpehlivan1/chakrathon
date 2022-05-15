@@ -55,7 +55,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
   };
 
   const renderContent = (): React.ReactNode => {
-    if (!leftIcon && !rightIcon) {
+    if (!leftIcon && !rightIcon && !globalLeftIcon && !globalRightIcon) {
       return children;
     }
 
