@@ -23,23 +23,33 @@ const SelectStyles: ComponentMultiStyleConfig = {
       borderWidth: '1px',
       height: '100%',
       _disabled: {
-        bg: '#EDF2F7',
-        color: '#4A5568',
+        bg: 'gray.100',
+        color: 'gray.600',
         _hover: {
-          borderColor: '#EDF2F7',
-          bg: '#CBD5E0',
+          borderColor: 'gray.100',
+          bg: 'gray.300',
           cursor: 'not-allowed',
+        },
+      },
+      _invalid: {
+        borderColor: 'red.600',
+        color: 'red.700',
+        _hover: {
+          borderColor: 'red.600',
         },
       },
       _hover: {
         bg: 'none',
-        borderColor: '#2B6CB0',
+        borderColor: 'blue.600',
       },
       _active: {
         bg: 'none',
       },
       _focus: {
-        borderColor: '#2B6CB0',
+        borderColor: 'blue.600',
+        _hover: {
+          borderColor: 'blue.700',
+        },
       },
       '.chakra-select__button-label': {
         flex: 1,
@@ -59,12 +69,22 @@ const SelectStyles: ComponentMultiStyleConfig = {
         px: '8px',
       },
       _hover: {
-        bg: '#EBF8FF',
-        color: '#2B6CB0',
+        bg: `${colorScheme}.50`,
+        color: `${colorScheme}.600`,
+      },
+      '&.chakra-option-disabled': {
+        bg: 'gray.100',
+        color: 'gray.600',
+        cursor: 'not-allowed',
       },
       '&.chakra-select__option-active': {
         color: 'white',
         backgroundColor: `${colorScheme}.600`,
+        fontWeight: 'semibold',
+        _hover: {
+          color: 'white',
+          bg: `${colorScheme}.700`,
+        },
       },
     },
     popover: {
@@ -74,7 +94,56 @@ const SelectStyles: ComponentMultiStyleConfig = {
       },
     },
   }),
-  variants: {},
+  variants: {
+    filled: ({ invalid, colorScheme }) => ({
+      button: {
+        border: 'none',
+        bg: 'gray.50',
+        color: 'gray.600',
+        _hover: {
+          border: 'none',
+          bg: 'blue.50',
+          color: 'blue.600',
+        },
+        _focus: {
+          border: '1px solid',
+          bg: 'none',
+          color: `${colorScheme}.600`,
+          _hover: {
+            border: '1px solid',
+            bg: 'none',
+            color: `${colorScheme}.700`,
+          },
+        },
+        _disabled: {
+          border: 'none',
+          bg: 'blackAlpha.50',
+          color: 'gray.500',
+          _hover: {
+            border: 'none',
+            bg: 'gray.100',
+            color: 'gray.600',
+          },
+        },
+        ...(invalid && {
+          border: 'none',
+          bg: 'red.100',
+          color: 'red.600',
+          _hover: {
+            border: 'none',
+            bg: 'red.200',
+            color: 'red.800',
+          },
+        }),
+      },
+      option: {
+        '&.chakra-option-disabled': {
+          color: 'gray.500',
+          cursor: 'not-allowed',
+        },
+      },
+    }),
+  },
   defaultProps: {
     colorScheme: 'blue',
   },

@@ -23,18 +23,43 @@ const selectStories: ComponentMeta<typeof Select> = {
   component: Select,
   argTypes: {
     value: {
-      description: '',
+      description: 'Select value.',
       defaultValue: '',
       control: 'text',
+      table: {
+        type: { summary: 'string | number' },
+      },
     },
     isDisabled: {
-      description: '',
+      description: 'If true, the select or select option will be disabled.',
       defaultValue: false,
       options: [true, false],
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: 'false',
+        defaultValue: false,
+        category: 'Controls',
+      },
+    },
+    invalid: {
+      description: 'If true, the select component will be invalid.',
+      defaultValue: false,
+      options: [true, false],
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: false,
+        category: 'Controls',
+      },
+    },
+    variant: {
+      description: 'Select component variants',
+      defaultValue: 'outline',
+      options: ['outline', 'filled'],
+      control: 'select',
+      table: {
+        type: { summary: 'outline | filled' },
+        defaultValue: 'outline',
         category: 'Controls',
       },
     },
@@ -42,11 +67,13 @@ const selectStories: ComponentMeta<typeof Select> = {
   args: {
     value: '',
     isDisabled: false,
+    invalid: false,
+    variant: 'outline',
   },
   parameters: {
     controls: {
       expanded: true,
-      include: ['value', 'isDisabled'],
+      include: ['value', 'isDisabled', 'invalid', 'variant'],
     },
   },
 };
@@ -81,7 +108,7 @@ export const SelectComponent: ComponentStory<typeof Select> = (props) => {
           </SelectOption>
         </SelectMenu>
       </Select>
-      <Divider mb={10} />
+      <Divider my={10} />
       <Text as="h1">Examples</Text>
       <ExampleContainer header="1. Selector with left icon">
         <Select value={value} onChange={onChange} placeholder="Please select value">
