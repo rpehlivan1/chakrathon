@@ -2,7 +2,7 @@ import { ComponentMultiStyleConfig } from '@chakra-ui/react';
 
 const SelectStyles: ComponentMultiStyleConfig = {
   parts: ['wrapper', 'input', 'button', 'menu', 'option', 'popover'],
-  baseStyle: ({ colorScheme }) => ({
+  baseStyle: ({ isOpen, colorScheme }) => ({
     wrapper: {
       minWidth: '200px',
     },
@@ -21,6 +21,7 @@ const SelectStyles: ComponentMultiStyleConfig = {
       width: '100%',
       borderRadius: '4px',
       borderWidth: '1px',
+      borderColor: isOpen ? '#2B6CB0' : '#E2E8F0',
       height: '100%',
       _disabled: {
         bg: '#EDF2F7',
@@ -76,6 +77,7 @@ const SelectStyles: ComponentMultiStyleConfig = {
   }),
   variants: {},
   defaultProps: {
+    isOpen: false,
     colorScheme: 'blue',
   },
 };

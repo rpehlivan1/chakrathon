@@ -4,6 +4,7 @@ import { runIfFn } from '@chakra-ui/utils';
 import useSelectContext from '@components/Select/hooks/use-select-context.hook';
 import useSelectStyles from '@components/Select/hooks/use-select-styles.hook';
 import { MaybeRenderElementProp } from '@src/types/render.type';
+import useSelectButton from '@components/Select/hooks/use-select-button.hook';
 
 export interface SelectButtonProps extends Omit<ButtonProps, 'leftIcon' | 'rightIcon'> {
   children: React.ReactNode;
@@ -14,7 +15,8 @@ export interface SelectButtonProps extends Omit<ButtonProps, 'leftIcon' | 'right
 const SelectButton = React.forwardRef<HTMLButtonElement, SelectButtonProps>(
   ({ leftIcon, rightIcon, children, sx, onClick, ...restProps }, forwardRef) => {
     const { button } = useSelectStyles();
-    const { isOpen = false, onToggle, isDisabled } = useSelectContext();
+    const { isOpen = false, onToggle } = useSelectContext();
+    const buttonProps = useSelectButton();
 
     const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       onToggle();
@@ -40,12 +42,12 @@ const SelectButton = React.forwardRef<HTMLButtonElement, SelectButtonProps>(
       <PopoverTrigger>
         <Button
           ref={forwardRef}
-          isDisabled={isDisabled}
           className="chakra-select__select-button"
           sx={{ ...button, ...sx }}
           leftIcon={renderLeftIcon()}
           rightIcon={renderRightIcon()}
           onClick={onButtonClick}
+          {...buttonProps}
           {...restProps}>
           <Box className="chakra-select__button-label" as="span">
             {children}
