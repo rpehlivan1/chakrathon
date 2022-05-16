@@ -21,6 +21,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
   children,
   leftIcon,
   rightIcon,
+  isDisabled,
   sx,
   ...restProps
 }) => {
@@ -64,7 +65,11 @@ const SelectOption: React.FC<SelectOptionProps> = ({
 
   return (
     <Box
-      className={cx('chakra-select__select-option', isSelected && 'chakra-select__option-active')}
+      className={cx(
+        'chakra-select__select-option',
+        isSelected && 'chakra-select__option-active',
+        isDisabled && 'chakra-option-disabled',
+      )}
       as="li"
       sx={{ ...optionStyle, ...sx }}
       {...optionProps}
