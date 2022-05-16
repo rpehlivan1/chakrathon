@@ -1,6 +1,7 @@
 import useSelectContext from '@components/Select/hooks/use-select-context.hook';
+import { ButtonProps } from '@chakra-ui/react';
 
-const useSelectButton = () => {
+const useSelectButton = (): ButtonProps => {
   const { isOpen, isDisabled } = useSelectContext();
 
   return {

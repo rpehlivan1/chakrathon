@@ -1,14 +1,15 @@
 import useSelectContext from '@components/Select/hooks/use-select-context.hook';
+import { BoxProps } from '@chakra-ui/react';
 
-const useSelectMenu = () => {
+const useSelectMenu = (): BoxProps => {
   const { readonly, clearable } = useSelectContext();
 
   return {
-    tabindex: '-1',
+    tabIndex: -1,
     role: 'listbox',
     'aria-required': !clearable,
-    'aria-readOnly': readonly,
-    'aria-multiSelectable': false,
+    'aria-readonly': readonly,
+    'aria-multiselectable': false,
   };
 };
 
