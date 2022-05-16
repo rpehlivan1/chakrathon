@@ -1,6 +1,21 @@
 module.exports = {
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  collectCoverageFrom: ['!**/__tests/**', '**/*.{ts,tsx}'],
+  collectCoverageFrom: [
+    '!**/__tests/**',
+    '**/*.{ts,tsx}',
+    '!**/coverage/**, !**/__tests__/helpers/**',
+    '!jest.config.ts',
+    '!.storybook/**',
+    '!**/src/theme/**',
+    '!vite.config.ts',
+    '!**/src/**/**/**/stories/',
+  ],
+  coveragePathIgnorePatterns: [
+    'src/components/Select/index.ts',
+    '^.*\\.stories\\.[jt]sx?$',
+    '__tests__/helpers',
+    '^.*\\.styles\\.[jt]sx?$',
+  ],
   testPathIgnorePatterns: ['/node_modules/', '/.storybook/', '/stories/', '/__tests__/helpers'],
   coverageThreshold: {
     global: {

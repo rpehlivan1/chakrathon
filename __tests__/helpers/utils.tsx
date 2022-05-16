@@ -9,16 +9,17 @@ export const selectProviderProps: UseSelectReturn = {
   option: { value: 'option-1', label: 'Option 1' },
   isOpen: false,
   invalid: false,
-  onToggle: jest.fn(),
+  id: '25',
   isDisabled: false,
   clearable: false,
   hideDefaultChevron: false,
-  onChange: jest.fn(),
-  onClose: jest.fn(),
   placeholder: 'Placeholder',
-  onOpen: jest.fn(),
   readonly: false,
-  setOption: jest.fn(),
+  onToggle: jest.fn(() => {}),
+  onOpen: jest.fn(() => {}),
+  onChange: jest.fn(() => {}),
+  onClose: jest.fn(() => {}),
+  setOption: jest.fn(() => {}),
 };
 
 /**
