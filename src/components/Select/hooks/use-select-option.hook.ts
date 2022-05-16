@@ -17,7 +17,7 @@ const useSelectOption = (option: SelectOption) => {
     setOption(option);
   }, [option, setOption]);
 
-  return { isSelected, role: 'option', onClick };
+  return { isSelected, role: 'option', 'aria-selected': isSelected, onClick };
 };
 
 export default useSelectOption;

@@ -1,9 +1,11 @@
 import React from 'react';
-import { SelectOption } from '@components/Select/interfaces/select.interface';
+import {
+  SelectControlProps,
+  SelectOption,
+  SelectRenderProps,
+} from '@components/Select/interfaces/select.interface';
 import { SelectValue } from '@components/Select';
 import usePrevious from '@hooks/use-previous.hook';
-import { SelectControlProps, SelectRenderProps } from '@components/Select/select.component';
-import { setValues } from 'framer-motion/types/render/utils/setters';
 
 export type UseSelectProps = SelectControlProps & SelectRenderProps;
 
