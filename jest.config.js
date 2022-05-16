@@ -1,5 +1,7 @@
 module.exports = {
-  collectCoverageFrom: ['!**/__tests/**', '**/*.{js,jsx,ts,tsx}'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  collectCoverageFrom: ['!**/__tests/**', '**/*.{ts,tsx}'],
+  testPathIgnorePatterns: ['/node_modules/', '/.storybook/', '/stories/', '/__tests__/helpers'],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -9,7 +11,8 @@ module.exports = {
     },
   },
   transform: {
-    '\\.[jt]sx?$': 'babel-jest',
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
   preset: 'ts-jest',
   globals: {
@@ -18,13 +21,15 @@ module.exports = {
       babelConfig: true,
     },
   },
-  rootDir: './',
-  modulePaths: ['<rootDir>/src'],
+  testEnvironment: 'jsdom',
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '@components/(.*)$': '<rootDir>/src/components/$1',
+    '@hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '@theme/(.*)$': '<rootDir>/src/theme/$1',
+    '@src/(.*)$': '<rootDir>/src/$1',
+    '@root/(.*)$': '<rootDir>/$1',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   moduleDirectories: ['node_modules', 'src'],
-  testPathIgnorePatterns: ['/node_modules/', '/.storybook/', '/stories/'],
   testMatch: ['<rootDir>/__tests__/**/*.(tsx|ts|js)'],
 };
