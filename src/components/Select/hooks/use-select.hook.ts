@@ -5,8 +5,7 @@ import {
   SelectRenderProps,
 } from '@components/Select/interfaces/select.interface';
 import { SelectValue } from '@components/Select';
-import usePrevious from '@hooks/use-previous.hook';
-import { useIds, useOutsideClick } from '@chakra-ui/react';
+import { useIds, usePrevious } from '@chakra-ui/react';
 
 export type UseSelectProps = SelectControlProps & SelectRenderProps;
 

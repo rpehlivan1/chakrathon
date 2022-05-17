@@ -39,7 +39,6 @@ module.exports = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '@components/(.*)$': '<rootDir>/src/components/$1',
-    '@hooks/(.*)$': '<rootDir>/src/hooks/$1',
     '@theme/(.*)$': '<rootDir>/src/theme/$1',
     '@src/(.*)$': '<rootDir>/src/$1',
     '@root/(.*)$': '<rootDir>/$1',

@@ -14,7 +14,6 @@ module.exports = {
         alias: {
           ...config.resolve.alias,
           '@components': toPath('./src/components'),
-          '@hooks': toPath('./src/hooks'),
           '@theme': toPath('./src/theme'),
           '@src': toPath('./src'),
           '@root': toPath('*'),
