@@ -1,21 +1,32 @@
 import useSelectContext from '@components/Select/hooks/use-select-context.hook';
 import { BoxProps } from '@chakra-ui/react';
 import { KeyboardEvent } from 'react';
-import { SelectKeys } from '@components/Select/types/select.type';
+import { SelectKeyboardKey } from '@components/Select/enums/select.enum';
 
 const useSelectMenu = (): BoxProps => {
-  const { selectId, readonly, clearable, activeIndexKey, onNextOption, onPrevOption } =
-    useSelectContext();
+  const {
+    isOpen,
+    selectId,
+    readonly,
+    clearable,
+    activeIndex,
+    activeIndexKey,
+    onNextOption,
+    onPrevOption,
+  } = useSelectContext();
 
   const onKeyUp = (event: KeyboardEvent) => {
     event.preventDefault();
 
-    const key = event.key as SelectKeys;
-
-    if (key === 'ArrowUp') {
-      onPrevOption();
-    } else if (key === 'ArrowDown') {
-      onNextOption();
+    switch (event.key) {
+      case SelectKeyboardKey.ArrowUp: {
+        onPrevOption();
+        break;
+      }
+      case SelectKeyboardKey.ArrowDown: {
+        onNextOption();
+        break;
+      }
     }
   };
 

@@ -12,14 +12,22 @@ export interface SelectContextProps {
 }
 
 const defaultSelectContext: UseSelectReturn = {
+  selectId: '',
+  activeIndex: 0,
+  activeIndexKey: '',
+  options: [],
   isOpen: false,
   value: undefined,
   option: undefined,
   onOpen: () => {},
   onClose: () => {},
-  onToggle: () => {},
   setOption: () => {},
   onChange: () => {},
+  addOption: () => {},
+  updateOption: () => {},
+  onNextOption: () => {},
+  onPrevOption: () => {},
+  setActiveIndex: () => {},
 };
 
 const SelectContext = React.createContext<UseSelectReturn>(defaultSelectContext);

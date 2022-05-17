@@ -86,6 +86,12 @@ const SelectStyles: ComponentMultiStyleConfig = {
         bg: `${colorScheme}.50`,
         color: `${colorScheme}.600`,
       },
+      _focus: {
+        outline: 'none',
+        boxShadow: 'none',
+        bg: `${colorScheme}.50`,
+        color: `${colorScheme}.600`,
+      },
       '&.chakra-option-disabled': {
         bg: 'gray.100',
         color: 'gray.600',

@@ -12,6 +12,7 @@ export interface SelectControlProps {
   required?: boolean;
   readonly?: boolean;
   defaultValue?: SelectValue;
+  closeOnSelect?: boolean;
   value?: SelectValue;
   onOpen?: () => void;
   onClose?: () => void;

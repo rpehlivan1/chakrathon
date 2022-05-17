@@ -15,13 +15,8 @@ export interface SelectButtonProps extends Omit<ButtonProps, 'leftIcon' | 'right
 const SelectButton = React.forwardRef<HTMLButtonElement, SelectButtonProps>(
   ({ leftIcon, rightIcon, children, sx, onClick, ...restProps }, forwardRef) => {
     const { button } = useSelectStyles();
-    const { isOpen = false, onToggle } = useSelectContext();
-    const buttonProps = useSelectButton();
-
-    const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      onToggle();
-      onClick?.(e);
-    };
+    const { isOpen = false } = useSelectContext();
+    const buttonProps = useSelectButton({ onClick, forwardRef });
 
     const renderLeftIcon = (): React.ReactElement | undefined => {
       if (!leftIcon) {
@@ -40,12 +35,10 @@ const SelectButton = React.forwardRef<HTMLButtonElement, SelectButtonProps>(
 
     return (
       <Button
-        ref={forwardRef}
         className="chakra-select__select-button"
         sx={{ ...button, ...sx }}
         leftIcon={renderLeftIcon()}
         rightIcon={renderRightIcon()}
-        onClick={onButtonClick}
         {...buttonProps}
         {...restProps}>
         <Box className="chakra-select__button-label" as="span">

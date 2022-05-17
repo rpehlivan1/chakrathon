@@ -6,7 +6,7 @@ import {
 } from '@components/Select/interfaces/select.interface';
 import { SelectValue } from '@components/Select';
 import usePrevious from '@hooks/use-previous.hook';
-import { useIds } from '@chakra-ui/react';
+import { useIds, useOutsideClick } from '@chakra-ui/react';
 
 export type UseSelectProps = SelectControlProps & SelectRenderProps;
 
@@ -17,6 +17,7 @@ const useSelect = ({
   onChange,
   onOpen,
   onClose,
+  closeOnSelect = true,
   ...restProps
 }: UseSelectProps) => {
   const [open, setOpen] = React.useState<boolean>();
@@ -37,6 +38,10 @@ const useSelect = ({
 
     return `chakra-select-option-${activeIndex}`;
   }, [activeIndex]);
+
+  const isOpenStatus = React.useMemo(() => {
+    return open && !restProps.isDisabled;
+  }, [open, restProps.isDisabled]);
 
   React.useEffect(() => {
     setValue(defaultValue);
@@ -59,15 +64,10 @@ const useSelect = ({
 
   const onSelectClose = () => {
     setOpen(false);
-    onClose?.();
     setOptions([]);
     setActiveIndex(-1);
+    onClose?.();
   };
-
-  const onSelectToggle = React.useCallback(() => {
-    setOpen(!open);
-    open ? onClose?.() : onOpen?.();
-  }, [open, setOpen, onOpen, onClose]);
 
   const onValueChange = React.useCallback(
     (newValue: SelectValue) => {
@@ -84,6 +84,8 @@ const useSelect = ({
       if (newOption.value !== value) {
         setOption(newOption);
         onValueChange(newOption.value);
+
+        closeOnSelect && onSelectClose();
       }
     },
     [value, onValueChange, setOption],
@@ -114,20 +116,27 @@ const useSelect = ({
   const onNextOption = () => {
     if (options.length - 1 > activeIndex) {
       setActiveIndex((prevIndex) => prevIndex + 1);
-    } else {
-      setActiveIndex(0);
+
+      return;
     }
+
+    setActiveIndex(0);
   };
 
   const onPrevOption = () => {
     if (activeIndex > 0) {
       setActiveIndex((prevIndex) => prevIndex - 1);
+
+      return;
     }
+
+    setActiveIndex(options.length - 1);
   };
 
   return {
     selectId,
-    isOpen: open,
+    isOpen: isOpenStatus,
+    activeIndex,
     activeIndexKey,
     setActiveIndex,
     value,
@@ -135,7 +144,6 @@ const useSelect = ({
     options,
     onOpen: onSelectOpen,
     onClose: onSelectClose,
-    onToggle: onSelectToggle,
     onChange: onValueChange,
     setOption: onOptionChange,
     addOption,

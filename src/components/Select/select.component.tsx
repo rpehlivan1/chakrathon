@@ -1,4 +1,4 @@
-import { Box, useMultiStyleConfig } from '@chakra-ui/react';
+import { Box, useMultiStyleConfig, useOutsideClick } from '@chakra-ui/react';
 import React from 'react';
 import SelectInput from '@components/Select/components/select-input.component';
 import SelectStyleContext from './contexts/select-style.context';
@@ -23,8 +23,12 @@ const Select = React.forwardRef<HTMLInputElement, SelectProps>(
     { name, children, variant, size, isDisabled, readonly, invalid, rootProps, ...restProps },
     forwardRef,
   ) => {
+    const ref = React.useRef<HTMLDivElement>(null);
     const { sx, ...restRootProps } = rootProps || {};
     const context = useSelect({ isDisabled, invalid, readonly, ...restProps });
+
+    useOutsideClick({ ref, handler: context.onClose });
+
     const styles = useMultiStyleConfig('SelectStyles', {
       isOpen: context.isOpen,
       variant,
@@ -37,7 +41,11 @@ const Select = React.forwardRef<HTMLInputElement, SelectProps>(
     return (
       <SelectContext.Provider value={context}>
         <SelectStyleContext.Provider value={styles}>
-          <Box className="chakra-select" sx={{ ...styles.wrapper, ...sx }} {...restRootProps}>
+          <Box
+            ref={ref}
+            className="chakra-select"
+            sx={{ ...styles.wrapper, ...sx }}
+            {...restRootProps}>
             <SelectInput ref={forwardRef} name={name} />
             {runIfFn(children, { isOpen: context.isOpen, option: context.option })}
           </Box>
