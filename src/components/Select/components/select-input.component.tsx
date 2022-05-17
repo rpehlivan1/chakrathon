@@ -19,7 +19,7 @@ const SelectInput = React.forwardRef<HTMLInputElement, SelectInputProps>(
         sx={{ ...styles.input, ...sx }}
         readOnly
         name={name}
-        value={value}
+        value={value || ''}
       />
     );
   },

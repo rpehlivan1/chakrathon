@@ -1,4 +1,4 @@
-import { Box, Popover, useMultiStyleConfig } from '@chakra-ui/react';
+import { Box, useMultiStyleConfig } from '@chakra-ui/react';
 import React from 'react';
 import SelectInput from '@components/Select/components/select-input.component';
 import SelectStyleContext from './contexts/select-style.context';
@@ -38,10 +38,8 @@ const Select = React.forwardRef<HTMLInputElement, SelectProps>(
       <SelectContext.Provider value={context}>
         <SelectStyleContext.Provider value={styles}>
           <Box className="chakra-select" sx={{ ...styles.wrapper, ...sx }} {...restRootProps}>
-            <Popover matchWidth isOpen={context.isOpen}>
-              <SelectInput ref={forwardRef} name={name} />
-              {runIfFn(children, { isOpen: context.isOpen, option: context.option })}
-            </Popover>
+            <SelectInput ref={forwardRef} name={name} />
+            {runIfFn(children, { isOpen: context.isOpen, option: context.option })}
           </Box>
         </SelectStyleContext.Provider>
       </SelectContext.Provider>

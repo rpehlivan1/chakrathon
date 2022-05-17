@@ -4,7 +4,8 @@ const SelectStyles: ComponentMultiStyleConfig = {
   parts: ['wrapper', 'input', 'button', 'menu', 'option', 'popover'],
   baseStyle: ({ isOpen, colorScheme }) => ({
     wrapper: {
-      minWidth: '200px',
+      position: 'relative',
+      minWidth: '211px',
     },
     input: {
       display: 'none',
@@ -21,7 +22,7 @@ const SelectStyles: ComponentMultiStyleConfig = {
       width: '100%',
       borderRadius: '4px',
       borderWidth: '1px',
-      borderColor: isOpen ? '#2B6CB0' : '#E2E8F0',
+      borderColor: isOpen ? 'blue.600' : 'gray.200',
       height: '100%',
       _disabled: {
         bg: 'gray.100',
@@ -59,6 +60,18 @@ const SelectStyles: ComponentMultiStyleConfig = {
     },
     menu: {
       width: '100%',
+      maxHeight: '211px',
+      overflowY: 'auto',
+      margin: '3px 0 0',
+      position: 'absolute',
+      zIndex: '1000',
+      listStyle: 'none',
+      padding: 0,
+      background: 'white',
+      borderWidth: isOpen ? '1px' : 0,
+      borderStyle: 'solid',
+      borderColor: 'gray.200',
+      borderRadius: '8px',
     },
     option: {
       p: '8px 20px',

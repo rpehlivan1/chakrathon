@@ -1,4 +1,4 @@
-import { Button, ButtonProps, PopoverTrigger, Box } from '@chakra-ui/react';
+import { Button, ButtonProps, Box } from '@chakra-ui/react';
 import React from 'react';
 import { runIfFn } from '@chakra-ui/utils';
 import useSelectContext from '@components/Select/hooks/use-select-context.hook';
@@ -39,21 +39,19 @@ const SelectButton = React.forwardRef<HTMLButtonElement, SelectButtonProps>(
     };
 
     return (
-      <PopoverTrigger>
-        <Button
-          ref={forwardRef}
-          className="chakra-select__select-button"
-          sx={{ ...button, ...sx }}
-          leftIcon={renderLeftIcon()}
-          rightIcon={renderRightIcon()}
-          onClick={onButtonClick}
-          {...buttonProps}
-          {...restProps}>
-          <Box className="chakra-select__button-label" as="span">
-            {children}
-          </Box>
-        </Button>
-      </PopoverTrigger>
+      <Button
+        ref={forwardRef}
+        className="chakra-select__select-button"
+        sx={{ ...button, ...sx }}
+        leftIcon={renderLeftIcon()}
+        rightIcon={renderRightIcon()}
+        onClick={onButtonClick}
+        {...buttonProps}
+        {...restProps}>
+        <Box className="chakra-select__button-label" as="span">
+          {children}
+        </Box>
+      </Button>
     );
   },
 );

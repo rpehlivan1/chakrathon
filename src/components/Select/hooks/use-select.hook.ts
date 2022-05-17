@@ -6,6 +6,7 @@ import {
 } from '@components/Select/interfaces/select.interface';
 import { SelectValue } from '@components/Select';
 import usePrevious from '@hooks/use-previous.hook';
+import { useIds } from '@chakra-ui/react';
 
 export type UseSelectProps = SelectControlProps & SelectRenderProps;
 
@@ -22,7 +23,20 @@ const useSelect = ({
   const [option, setOption] = React.useState<SelectOption>();
   const [value, setValue] = React.useState<SelectValue>();
 
+  const [options, setOptions] = React.useState<SelectOption[]>([]);
+  const [activeIndex, setActiveIndex] = React.useState<number>(-1);
+
   const prevValue = usePrevious(value);
+
+  const [selectId] = useIds(restProps.id, 'chakra-select');
+
+  const activeIndexKey = React.useMemo(() => {
+    if (activeIndex < 0) {
+      return;
+    }
+
+    return `chakra-select-option-${activeIndex}`;
+  }, [activeIndex]);
 
   React.useEffect(() => {
     setValue(defaultValue);
@@ -46,6 +60,8 @@ const useSelect = ({
   const onSelectClose = () => {
     setOpen(false);
     onClose?.();
+    setOptions([]);
+    setActiveIndex(-1);
   };
 
   const onSelectToggle = React.useCallback(() => {
@@ -73,15 +89,59 @@ const useSelect = ({
     [value, onValueChange, setOption],
   );
 
+  const addOption = React.useCallback(
+    (option: SelectOption) => {
+      setOptions((prevState) => [...prevState, option]);
+    },
+    [setOptions],
+  );
+
+  const updateOption = React.useCallback(
+    (newOption: SelectOption, prevOption: SelectOption) => {
+      setOptions((prevState) => [
+        ...prevState.map((item) => {
+          if (item.value === prevOption.value) {
+            return newOption;
+          }
+
+          return item;
+        }),
+      ]);
+    },
+    [setOptions],
+  );
+
+  const onNextOption = () => {
+    if (options.length - 1 > activeIndex) {
+      setActiveIndex((prevIndex) => prevIndex + 1);
+    } else {
+      setActiveIndex(0);
+    }
+  };
+
+  const onPrevOption = () => {
+    if (activeIndex > 0) {
+      setActiveIndex((prevIndex) => prevIndex - 1);
+    }
+  };
+
   return {
+    selectId,
     isOpen: open,
+    activeIndexKey,
+    setActiveIndex,
     value,
     option,
+    options,
     onOpen: onSelectOpen,
     onClose: onSelectClose,
     onToggle: onSelectToggle,
     onChange: onValueChange,
     setOption: onOptionChange,
+    addOption,
+    updateOption,
+    onNextOption,
+    onPrevOption,
     ...restProps,
   };
 };

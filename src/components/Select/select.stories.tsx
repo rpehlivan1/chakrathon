@@ -100,12 +100,8 @@ export const SelectComponent: ComponentStory<typeof Select> = (props) => {
         <SelectSelector />
         <SelectMenu>
           <SelectOption value="value-1">Option 1</SelectOption>
-          <SelectOption value="value-2" leftIcon={<AddIcon />}>
-            Option 2
-          </SelectOption>
-          <SelectOption value="value-3" leftIcon={<AddIcon />} rightIcon={<PhoneIcon />}>
-            Option 3
-          </SelectOption>
+          <SelectOption value="value-2">Option 2</SelectOption>
+          <SelectOption value="value-3">Option 3</SelectOption>
         </SelectMenu>
       </Select>
       <Divider my={10} />
