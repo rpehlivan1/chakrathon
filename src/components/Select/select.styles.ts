@@ -158,6 +158,25 @@ const SelectStyles: ComponentMultiStyleConfig = {
       },
     }),
   },
+  sizes: {
+    sm: {
+      button: {
+        height: '32px',
+        fontSize: '12px',
+      },
+    },
+    md: {
+      button: {
+        height: '42px',
+      },
+    },
+    lg: {
+      button: {
+        height: '50px',
+        fontSize: '16px',
+      },
+    },
+  },
   defaultProps: {
     isOpen: false,
     colorScheme: 'blue',
