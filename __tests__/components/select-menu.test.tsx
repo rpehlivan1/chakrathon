@@ -1,15 +1,13 @@
 import { render } from '@testing-library/react';
 import SelectMenu from '../../src/components/Select/components/select-menu.component';
-import { MockPopoverWrapper, selectElement } from '../helpers/utils';
+import { selectElement } from '../helpers/utils';
 
 describe('<SelectInput/> component', () => {
   it('should render component', () => {
     render(
-      <MockPopoverWrapper>
-        <SelectMenu>
-          <>MenuItem</>
-        </SelectMenu>
-      </MockPopoverWrapper>,
+      <SelectMenu>
+        <>MenuItem</>
+      </SelectMenu>,
     );
 
     expect(selectElement('.chakra-select__select-menu')).toBeInTheDocument();

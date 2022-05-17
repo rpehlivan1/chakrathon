@@ -2,15 +2,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import SelectButton, {
   SelectButtonProps,
 } from '../../src/components/Select/components/select-button.component';
-import { Popover } from '@chakra-ui/react';
 
 describe('<SelectButton/> component:', () => {
   const Component = (buttonProps?: Omit<SelectButtonProps, 'children'>) => {
-    return (
-      <Popover isOpen={false}>
-        <SelectButton {...buttonProps}>Trigger</SelectButton>
-      </Popover>
-    );
+    return <SelectButton {...buttonProps}>Trigger</SelectButton>;
   };
 
   it('render component', () => {
