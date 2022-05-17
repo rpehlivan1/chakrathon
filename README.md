@@ -20,7 +20,7 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 
 ### Fully controllable open state
 ```html
-<Select isOpen={isOpen} onVisibleChange={setIsOpen}>
+<Select isOpen={isOpen} onClose={onClose} onOpen={onOpen}>
     <SelectOption>Option 1</SelectOption>
     <SelectOption>Option 2</SelectOption>
 </Select>
