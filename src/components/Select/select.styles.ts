@@ -2,7 +2,7 @@ import { ComponentMultiStyleConfig } from '@chakra-ui/react';
 
 const SelectStyles: ComponentMultiStyleConfig = {
   parts: ['wrapper', 'input', 'button', 'menu', 'option', 'popover'],
-  baseStyle: ({ isOpen, colorScheme }) => ({
+  baseStyle: ({ isOpen, colorScheme, invalid }) => ({
     wrapper: {
       position: 'relative',
       minWidth: '211px',
@@ -33,13 +33,13 @@ const SelectStyles: ComponentMultiStyleConfig = {
           cursor: 'not-allowed',
         },
       },
-      _invalid: {
+      ...(invalid && {
         borderColor: 'red.600',
         color: 'red.700',
         _hover: {
           borderColor: 'red.600',
         },
-      },
+      }),
       _hover: {
         bg: 'none',
         borderColor: 'blue.600',

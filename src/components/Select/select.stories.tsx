@@ -22,13 +22,6 @@ const selectStories: ComponentMeta<typeof Select> = {
   title: 'Components/Select',
   component: Select,
   argTypes: {
-    value: {
-      description: 'Select value',
-      control: 'text',
-      table: {
-        type: { summary: 'string | number' },
-      },
-    },
     isDisabled: {
       description: 'If true, the select or select option will be disabled',
       defaultValue: false,
@@ -37,7 +30,8 @@ const selectStories: ComponentMeta<typeof Select> = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: false,
-        category: 'Controls',
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
       },
     },
     invalid: {
@@ -48,7 +42,8 @@ const selectStories: ComponentMeta<typeof Select> = {
       table: {
         type: { summary: 'boolean' },
         defaultValue: false,
-        category: 'Controls',
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
       },
     },
     variant: {
@@ -59,15 +54,22 @@ const selectStories: ComponentMeta<typeof Select> = {
       table: {
         type: { summary: 'outline | filled' },
         defaultValue: 'outline',
-        category: 'Controls',
+        category: 'Select Props',
+        subcategory: 'Select Style Props',
+      },
+    },
+    value: {
+      description: 'Select value',
+      table: {
+        type: { summary: 'string | number' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
       },
     },
     children: {
       description: 'Select input options',
-      defaultValue: {},
       table: {
-        type: { summary: 'MaybeRenderProp<SelectChildrenProps>' },
-        defaultValue: {},
+        type: { summary: 'React.ReactNode' },
         category: 'Select Props',
       },
     },
@@ -208,7 +210,6 @@ const selectStories: ComponentMeta<typeof Select> = {
   parameters: {
     controls: {
       expanded: true,
-      include: ['value', 'isDisabled', 'invalid', 'variant'],
     },
   },
 };
