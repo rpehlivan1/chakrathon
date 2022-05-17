@@ -24,7 +24,8 @@ const selectStories: ComponentMeta<typeof Select> = {
   argTypes: {
     children: {
       description: 'Select input options',
-      type: { required: true },
+      control: 'none',
+      type: { name: 'other', value: '', required: true },
       table: {
         type: { summary: 'React.ReactNode' },
       },
@@ -296,6 +297,22 @@ export const SelectComponent: ComponentStory<typeof Select> = (props) => {
             <SelectOption value="value-2">Option 2</SelectOption>
             <SelectOption value="value-3">Option 3</SelectOption>
           </SelectMenu>
+        </Select>
+      </ExampleContainer>
+      <ExampleContainer header="6. Select with render props">
+        <Select value={value} onChange={onChange} placeholder="Please select value">
+          {({ isOpen, option }) => (
+            <>
+              <SelectButton rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}>
+                Selected: {option?.label ?? 'none'}
+              </SelectButton>
+              <SelectMenu>
+                <SelectOption value="value-1">Option 1</SelectOption>
+                <SelectOption value="value-2">Option 2</SelectOption>
+                <SelectOption value="value-3">Option 3</SelectOption>
+              </SelectMenu>
+            </>
+          )}
         </Select>
       </ExampleContainer>
     </Box>
