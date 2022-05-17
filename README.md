@@ -69,20 +69,28 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 
 ### Select
 
-| Prop            | Description                                                    | Type                                           |
-|-----------------|----------------------------------------------------------------|------------------------------------------------|
-| rightIcon       | Element placed before the children                             | `React.ReactNode, (isOpen) => React.ReactNode` |
-| leftIcon        | Element placed after the children                              | `React.ReactNode, (isOpen) => React.ReactNode` |
-| clearable       | The indicator presented to clear the values from the component | `boolean`                                      |
-| placeholder     | placeholder for select                                         | `string `                                      |
-| variants        | `outline` `filled`                                             | `string`                                       |
-| size            | Sizes for `Select`                                             | `sm` `md` `lg`                                 |
-| onChange        | callback fired when `children` are triggered                   | `(value: string) => void`                      |
-| onVisibleChange | callback that returns `open` boolean, which tracks events.     | `(open: boolean) => void`                      |
-| value           | `Select` value                                                 | `string`                                       |
-| defaultValue    | `defaultValue` for `Select`                                    | `string`                                       |
-| isOpen          | if `true` select container will be opened                      | `boolean`                                      |
-| isDisabled      | 	A utility to manage disabled state.                           | `boolean`                                      |
+| Prop                | Description                                                    | Type                                           |
+|---------------------|----------------------------------------------------------------|------------------------------------------------|
+| rightIcon           | Element placed before the children                             | `React.ReactNode, (isOpen) => React.ReactNode` |
+| leftIcon            | Element placed after the children                              | `React.ReactNode, (isOpen) => React.ReactNode` |
+| clearable           | The indicator presented to clear the values from the component | `boolean`                                      |
+| placeholder         | Placeholder for select                                         | `string `                                      |
+| variants            | `outline` `filled`                                              | `string`                                       |
+| size                | Sizes for `Select`                                             | `sm` `md` `lg`                                 |
+| onChange            | callback fired when `children` are triggered                    | `(value: string) => void`                      | |
+| value               | `Select` value                                                 | `string`                                       |
+| defaultValue        | `defaultValue` for `Select`                                    | `string`                                       |
+| isOpen              | if `true` select container will be opened                      | `boolean`                                      |
+| isDisabled          | A utility to manage disabled state.                            | `boolean`
+| onOpen              | Callback fired when select opens                                | `() => void`
+| onClose             | Callback fired when select closes                               | `() => void`
+| invalid             | If `true`, the select component will be invalid                | `boolean`
+| readOnly            | If `true`, the select will be readonly                         | `boolean`
+| required            | If `true`, the select will be required field                    | `boolean`
+| id                  | Select option id value                                         | `string`
+| hideDefaultChevron  | If true then default chevron icon will not be displayed        | `boolean`
+| option              | `Select` option object                                         | `SelectOption`
+
 
 ### SelectOption
 
@@ -91,4 +99,6 @@ import { Select, SelectGroup, SelectOption } from '@dragonball/select';
 | rightIcon  | Element placed before the children   | `React.ReactNode, (isSelected) => React.ReactNode` |
 | leftIcon   | Element placed after the children    | `React.ReactNode, (isSelected) => React.ReactNode` |
 | value      | `SelectOption` value                 | `string`                                           |
-| isDisabled | 	A utility to manage disabled state. | `boolean`                                          |
+| isDisabled | 	A utility to manage disabled state  | `boolean`                                          |
+| label      | `SelectOption` label                 | `React.ReactNode`
+| isSelected | Defines if `SelectOption` is selected | `boolean`

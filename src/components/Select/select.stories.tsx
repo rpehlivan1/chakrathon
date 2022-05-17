@@ -23,15 +23,14 @@ const selectStories: ComponentMeta<typeof Select> = {
   component: Select,
   argTypes: {
     value: {
-      description: 'Select value.',
-      defaultValue: '',
+      description: 'Select value',
       control: 'text',
       table: {
         type: { summary: 'string | number' },
       },
     },
     isDisabled: {
-      description: 'If true, the select or select option will be disabled.',
+      description: 'If true, the select or select option will be disabled',
       defaultValue: false,
       options: [true, false],
       control: 'boolean',
@@ -42,7 +41,7 @@ const selectStories: ComponentMeta<typeof Select> = {
       },
     },
     invalid: {
-      description: 'If true, the select component will be invalid.',
+      description: 'If true, the select component will be invalid',
       defaultValue: false,
       options: [true, false],
       control: 'boolean',
@@ -61,6 +60,142 @@ const selectStories: ComponentMeta<typeof Select> = {
         type: { summary: 'outline | filled' },
         defaultValue: 'outline',
         category: 'Controls',
+      },
+    },
+    children: {
+      description: 'Select input options',
+      defaultValue: {},
+      table: {
+        type: { summary: 'MaybeRenderProp<SelectChildrenProps>' },
+        defaultValue: {},
+        category: 'Select Props',
+      },
+    },
+    name: {
+      description: 'Select input name',
+      table: {
+        type: { summary: 'string' },
+        category: 'Select Props',
+      },
+    },
+    isOpen: {
+      description: 'If `true` select container will be opened ',
+      table: {
+        type: { summary: 'boolean' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
+      },
+    },
+    clearable: {
+      description: 'The indicator presented to clear the values from the component',
+      table: {
+        type: { summary: 'boolean' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
+      },
+    },
+    required: {
+      description: 'If true, the select will be required field',
+      table: {
+        type: { summary: 'boolean' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
+      },
+    },
+    readonly: {
+      description: 'If true, the select will be readonly',
+      table: {
+        type: { summary: 'boolean' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
+      },
+    },
+    defaultValue: {
+      description: 'Default select value',
+      table: {
+        type: { summary: 'SelectValue' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
+      },
+    },
+    onOpen: {
+      description: 'Callback fired when select opens ',
+      table: {
+        type: { summary: 'Callback', detail: '() => void' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
+      },
+    },
+    onClose: {
+      description: 'Callback fired when select closes',
+      table: {
+        type: { summary: 'Callback', detail: '() => void' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
+      },
+    },
+    onChange: {
+      description: 'callback fired when children are triggered ',
+      table: {
+        type: { summary: 'Callback', detail: '(value: SelectValue) => void' },
+        category: 'Select Props',
+        subcategory: 'Select Control Props',
+      },
+    },
+    id: {
+      description: 'Select option id value',
+      table: {
+        type: { summary: 'string' },
+        category: 'Select Props',
+        subcategory: 'Select Render Props',
+      },
+    },
+    hideDefaultChevron: {
+      description: 'If true then default chevron icon will not be displayed',
+      table: {
+        type: { summary: 'boolean' },
+        category: 'Select Props',
+        subcategory: 'Select Render Props',
+      },
+    },
+    placeholder: {
+      description: 'Select component placeholder',
+      table: {
+        type: { summary: 'string' },
+        category: 'Select Props',
+        subcategory: 'Select Render Props',
+      },
+    },
+    leftIcon: {
+      description: 'Element placed after the children',
+      table: {
+        type: { summary: 'ReactNode' },
+        category: 'Select Props',
+        subcategory: 'Select Render Props',
+      },
+    },
+    rightIcon: {
+      description: 'Element placed before the children',
+      table: {
+        type: { summary: 'ReactNode' },
+        category: 'Select Props',
+        subcategory: 'Select Render Props',
+      },
+    },
+    size: {
+      description: 'Select component size',
+      table: {
+        type: { summary: 'sm | md | lg' },
+        category: 'Select Props',
+        subcategory: 'Select Style Props',
+      },
+    },
+    rootProps: {
+      description: 'All <Box> properties',
+      table: {
+        type: { summary: 'BoxProps' },
+        category: 'Select Props',
+        subcategory: 'Select Style Props',
       },
     },
   },
