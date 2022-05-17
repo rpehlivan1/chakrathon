@@ -8,7 +8,11 @@ describe('useSelectLabelHook', () => {
 
   const wrapper: React.FC = ({ children }) => {
     return (
-      <SelectContext.Provider value={{ ...selectProviderProps, setOption: mockSetOption }}>
+      <SelectContext.Provider
+        value={{
+          ...selectProviderProps,
+          setOption: mockSetOption,
+        }}>
         {children}
       </SelectContext.Provider>
     );

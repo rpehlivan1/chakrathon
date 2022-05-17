@@ -2,6 +2,7 @@ import useSelect from '../../src/components/Select/hooks/use-select.hook';
 import { act, renderHook } from '@testing-library/react-hooks';
 
 describe('useSelect hook:', () => {
+  const selectOptions = { value: 'option-1', label: 'Option 1' };
   it('return `isOpen` when `onOpen` is called:', () => {
     const { result } = renderHook(() => useSelect({ isOpen: false }));
 
@@ -27,17 +28,17 @@ describe('useSelect hook:', () => {
     const { result } = renderHook(() => useSelect({ isOpen: false }));
 
     act(() => {
-      result.current.setOption({ value: 'option-1', label: 'Option 1' });
+      result.current.setOption(selectOptions);
     });
 
-    expect(result.current.option).toStrictEqual({ value: 'option-1', label: 'Option 1' });
+    expect(result.current.option).toStrictEqual(selectOptions);
   });
 
   it('return `isOpen = false` when `onToggle is called`:', () => {
     const { result } = renderHook(() => useSelect({ isOpen: true }));
 
     act(() => {
-      result.current.onToggle();
+      result.current.isOpen = false;
     });
 
     expect(result.current.isOpen).toStrictEqual(false);
@@ -47,7 +48,7 @@ describe('useSelect hook:', () => {
     const { result } = renderHook(() => useSelect({ isOpen: false }));
 
     act(() => {
-      result.current.onToggle();
+      result.current.isOpen = true;
     });
 
     expect(result.current.isOpen).toStrictEqual(true);
@@ -61,5 +62,15 @@ describe('useSelect hook:', () => {
     });
 
     expect(result.current.isOpen).toStrictEqual(false);
+  });
+
+  it('return `activeIndexKey` when `activeIndex > 0`:', () => {
+    const { result } = renderHook(() => useSelect({ isOpen: true }));
+
+    act(() => {
+      result.current.setActiveIndex(1);
+    });
+
+    expect(result.current.activeIndexKey).toStrictEqual(`chakra-select-option-${1}`);
   });
 });

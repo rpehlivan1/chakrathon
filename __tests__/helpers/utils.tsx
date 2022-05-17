@@ -1,5 +1,4 @@
 import React from 'react';
-import { Popover } from '@chakra-ui/react';
 import { UseSelectReturn } from '../../src/components/Select/hooks/use-select.hook';
 
 export const selectProviderProps: UseSelectReturn = {
@@ -15,11 +14,20 @@ export const selectProviderProps: UseSelectReturn = {
   hideDefaultChevron: false,
   placeholder: 'Placeholder',
   readonly: false,
-  onToggle: jest.fn(() => {}),
+  activeIndex: 0,
   onOpen: jest.fn(() => {}),
   onChange: jest.fn(() => {}),
   onClose: jest.fn(() => {}),
   setOption: jest.fn(() => {}),
+  onNextOption: jest.fn(),
+  selectId: 'select-id',
+  activeIndexKey: `chakra-select-key-${1}`,
+  options: [{ value: 'option-1', label: 'Option 1' }],
+  addOption: jest.fn(),
+  onPrevOption: jest.fn(),
+  required: false,
+  setActiveIndex: jest.fn(),
+  updateOption: jest.fn(),
 };
 
 /**
@@ -35,13 +43,4 @@ export const selectElement = (selector: string): Element => {
   }
 
   return element;
-};
-
-/**
- * Compose wrapper for components that require popover.
- *
- * @param children  Children of the popover
- */
-export const MockPopoverWrapper: React.FC = ({ children }) => {
-  return <Popover>{children}</Popover>;
 };

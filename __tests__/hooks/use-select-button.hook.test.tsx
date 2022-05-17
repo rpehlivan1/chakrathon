@@ -10,12 +10,19 @@ describe('<useSelectButton/> hook:', () => {
   };
 
   it('return defined values from hook:', () => {
-    const { result } = renderHook(() => useSelectButton(), { wrapper });
+    const { result } = renderHook(() => useSelectButton({ forwardRef: jest.fn() }), { wrapper });
 
     expect(result.current).toStrictEqual({
       disabled: false,
       'aria-haspopup': 'listbox',
       'aria-expanded': false,
+      type: 'button',
+      role: 'button',
+      ref: expect.any(Function),
+      onKeyDown: expect.any(Function),
+      onKeyUp: expect.any(Function),
+      onBlur: expect.any(Function),
+      onClick: expect.any(Function),
     });
   });
 });

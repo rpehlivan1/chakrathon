@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import React, { PropsWithChildren } from 'react';
 import SelectContext from '../../src/components/Select/contexts/select.context';
-import { MockPopoverWrapper, selectElement, selectProviderProps } from '../helpers/utils';
+import { selectElement, selectProviderProps } from '../helpers/utils';
 import { UseSelectReturn } from '../../src/components/Select/hooks/use-select.hook';
 import SelectSelector from '../../src/components/Select/components/select-selector.component';
 
@@ -12,7 +12,7 @@ describe('<SelectSelector/> component:', () => {
   }) => {
     return (
       <SelectContext.Provider value={{ ...selectProviderProps, ...rest }}>
-        <MockPopoverWrapper>{children}</MockPopoverWrapper>
+        {children}
       </SelectContext.Provider>
     );
   };

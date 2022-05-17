@@ -13,11 +13,15 @@ describe('<useSelectMenu/> hook:', () => {
     const { result } = renderHook(() => useSelectMenu(), { wrapper });
 
     expect(result.current).toStrictEqual({
+      id: 'select-id-menu',
       tabIndex: -1,
       role: 'listbox',
+      'aria-activedescendant': 'chakra-select-key-1',
       'aria-required': true,
       'aria-readonly': false,
       'aria-multiselectable': false,
+      onKeyDown: expect.any(Function),
+      onKeyUp: expect.any(Function),
     });
   });
 });
