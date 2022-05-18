@@ -3,17 +3,27 @@ const path = require('path');
 const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    '@storybook/preset-create-react-app',
-  ],
+  core: {
+    builder: 'webpack5',
+  },
+  webpackFinal: async (config) => {
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@components': toPath('./src/components'),
+          '@theme': toPath('./src/theme'),
+          '@src': toPath('./src'),
+          '@root': toPath('*'),
+          '@emotion/core': '@emotion/react',
+          'emotion-theming': '@emotion/react',
+        },
+      },
+    };
+  },
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-a11y'],
   framework: '@storybook/react',
   stories: ['../src/**/*.stories.@(js,jsx|ts|tsx)'],
-  webpackFinal: async (config, { configType }) => {
-    // Make whatever fine-grained changes you need
-    // Return the altered config
-    return config;
-  },
 };
