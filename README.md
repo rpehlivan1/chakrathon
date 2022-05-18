@@ -149,3 +149,60 @@ import {
 |------------|--------------------------------------------|---------------------------------------------------------|
 | rightIcon  | Element placed before the option children  | `React.ReactNode, (isOpen: boolean) => React.ReactNode` |
 | leftIcon   | Element placed after the option children   | `React.ReactNode, (isOpen: boolean) => React.ReactNode` |
+
+### Hooks
+
+- `useSelect` is a hook that manages all stateful logic needed to make a select functional.
+returns a set of props which lets you control the select component`- useSelect`is a hook that manages all stateful logic needed to make a select functional,
+returns a set of props which lets you control the select component
+- `useSelectOption` is a hook that manages all stateful logic of the option item, setting active index, specific selected id and so on.
+- `useSelectMenu` is a hook that manages <SelectMenu/> stateful logic.
+
+###  Props
+
+### useSelect
+| Returned prop  | Description                                       | Type                                                |
+|----------------|---------------------------------------------------|-----------------------------------------------------|
+| selectId       | Select Id to be used                              | `string`                                            |
+| isOpen         | `open` status of menu                             | `boolean`                                           |
+| activeIndex    | active index of select option                     | `number`                                            |
+| activeIndex    | active index of select option                     | `number`                                            |
+| activeIndexKey | active index key of select option                 | `string`                                            |
+| setActiveIndex | Sets given active index                           | `React.Dispatch<React.SetStateAction<number>>`      |
+| value          | Select value                                      | `string` or `number`                                |
+| option         | select option value                               | `{value: string or number, label: React.ReactNode}` |
+| onOpen         | controls open state of select option              | `() => void`                                        |
+| onClose        | controls close of select option                   | `() => void`                                        |
+| onChange       | callback when select value changes                | `(value: SelectValue) => void`                      |
+| setOption      | callback when select option value changes         | `(value: SelectOption) => void`                     |
+| addOption      | callback which sets options                       | `(value: SelectOption) => void`                     |
+| updateOptions  | fn that updates current option based on condition | `(newOption: SelectOption, prevOption) => void`     |
+| onNextOption   | fn that sets active index on next option          | `() => void`                                        |
+| onPrevOption   | fn that sets active index on prev option          | `() => void`                                        |
+
+
+### useSelectOption
+| Returned prop | Description                                          | Type                              |
+|---------------|------------------------------------------------------|-----------------------------------|
+| selectId      | Select Id to be used                                 | `string`                          |
+| ref           | Select option reference                              | `React.RefObject<HTMLDivElement>` |
+| id            | Select option id                                     | `id`                              |
+| tabIndex      | Select option tabIndex                               | `number`                          |
+| role          | role of the select option                            | `option`                          |
+| aria-selected | returns if aria-selected=true or aria-selected=false | `boolean`                         |
+| onClick       | callback fired on click is fired                     | `() => void`                      |
+| onKeyUp       | callback fired on onKeyUp is fired                   | `(event) => void`                 |
+| onKeyDown     | callback fired on KeyDown click                      | `(event) => void`                 |
+
+### useSelectMenu
+| Returned prop         | Description                              | Type              |
+|-----------------------|------------------------------------------|-------------------|
+| id                    | select menu id                           | `string`          |
+| tabIndex              | Select option tabIndex                   | `number`          |
+| role                  | role of the select menu                  | `option`          |
+| aria-required         | returns of aria-required                 | `boolean`         |
+| aria-readonly         | returns aria-readonly prop               | `boolean`         |
+| aria-multiselectable  | returns of aria-multiselectable          | `boolean`         |
+| aria-activedescendant | returns of aria-activedescendant of menu | `string`          |
+| onKeyUp               | callback fired on onKeyUp is fired       | `(event) => void` |
+| onKeyDown             | callback fired on KeyDown click          | `(event) => void` |
