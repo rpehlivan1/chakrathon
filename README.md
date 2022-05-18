@@ -153,7 +153,6 @@ import {
 ### Hooks
 
 - `useSelect` is a hook that manages all stateful logic needed to make a select functional.
-returns a set of props which lets you control the select component`- useSelect`is a hook that manages all stateful logic needed to make a select functional,
 returns a set of props which lets you control the select component
 - `useSelectOption` is a hook that manages all stateful logic of the option item, setting active index, specific selected id and so on.
 - `useSelectMenu` is a hook that manages <SelectMenu/> stateful logic.
