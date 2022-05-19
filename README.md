@@ -1,3 +1,11 @@
+## Project Setup
+
+`git clone https://github.com/rpehlivan1/chakrathon.git`
+
+ - Install deps -> `yarn install`
+ - Start Storybook -> `yarn storybook`
+ - Run tests -> `yarn test`
+ - Run test coverage -> `yarn test:coverage`
 ## Import
 
 - `Select:` The wrapper component provides context, state, and focus management.
